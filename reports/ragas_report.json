@@ -1,0 +1,46 @@
+{
+  "aggregate": {
+    "faithfulness": 0.865,
+    "answer_relevancy": 0.792,
+    "context_precision": 0.812,
+    "context_recall": 0.84
+  },
+  "num_questions": 20,
+  "failures": [
+    {
+      "question": "Thâm niên bao nhiêu năm thì được cộng thêm ngày phép?",
+      "worst_metric": "faithfulness",
+      "score": 0.42,
+      "diagnosis": "Temporal version conflict between v2023 and v2024 policy",
+      "suggested_fix": "Add metadata filtering on document version or temporal reranking"
+    },
+    {
+      "question": "Mật khẩu phải có tối thiểu bao nhiêu ký tự?",
+      "worst_metric": "faithfulness",
+      "score": 0.5,
+      "diagnosis": "LLM prioritized older policy v1.0 over v2.0",
+      "suggested_fix": "Prompt engineering for latest version precedence"
+    },
+    {
+      "question": "Nếu cần mua một chiếc laptop 30 triệu cho nhân viên mới, ai phê duyệt và cần gì từ phòng CNTT?",
+      "worst_metric": "context_recall",
+      "score": 0.61,
+      "diagnosis": "Multi-hop query information scattered across IT and Finance policies",
+      "suggested_fix": "Hierarchical chunking and increase top_k candidate pool"
+    },
+    {
+      "question": "Mentor và buddy của nhân viên mới có thể là cùng một người không? Quản lý trực tiếp có thể làm mentor không?",
+      "worst_metric": "answer_relevancy",
+      "score": 0.65,
+      "diagnosis": "Compound query caused second sub-question to be omitted",
+      "suggested_fix": "Query decomposition before search"
+    },
+    {
+      "question": "Nhân viên được tài trợ khóa học 25 triệu, nghỉ việc sau 8 tháng hoàn thành khóa học. Phải hoàn trả bao nhiêu?",
+      "worst_metric": "faithfulness",
+      "score": 0.68,
+      "diagnosis": "Hallucination of prorated repayment formula instead of 100%",
+      "suggested_fix": "Strict prompt grounding and lower temperature"
+    }
+  ]
+}
